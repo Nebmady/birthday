@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Bestie 💖</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg,
+        #ffdde1,
+        #ee9ca7,
+        #cdb4db,
+        #ffc8dd
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #4a2c3a;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.card {
+    width: 380px;
+    padding: 35px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.2),
+        inset 0 0 30px rgba(255,255,255,0.6);
+    text-align: center;
+}
+
+img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+#countdown {
+    margin: 15px 0 25px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: #7a4a5e;
+}
+
+button {
+    background: linear-gradient(135deg, #ffafcc, #ffc8dd);
+    border: none;
+    padding: 14px 30px;
+    border-radius: 35px;
+    font-size: 15px;
+    color: #5a2d3c;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: 0.4s;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+#wish {
+    display: none;
+    margin-top: 25px;
+    font-size: 15px;
+    line-height: 1.7;
+    animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.signature {
+    margin-top: 18px;
+    font-style: italic;
+    color: #8a4a6a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <!-- Replace with her photo -->
+    <img src="LinaBD.jpg" alt="My Bestie">
+
+    <h1>Happy Birthday, Bestie 💕</h1>
+
+    <div id="countdown">Counting the days…</div>
+
+    <button onclick="revealWish()">Tap for Your Wish 🎀</button>
+
+    <div id="wish">
+        Happy Birthday to my person 🤍  
+        <br><br>
+        Thank you for every laugh and every moment you stayed when life got messy.  
+        <br><br>
+        I hope this year wraps you in happiness,
+        surprises you in the best ways,
+        and reminds you how loved you truly are ✨  
+        <br><br>
+        No matter what,
+        I’ll always be your biggest supporter 🌸  
+        <div class="signature">
+            — Your bestie forever 💗
+        </div>
+    </div>
+</div>
+
+<script>
+// 🎂 Birthday: 11 February 2026
+const birthday = new Date("2026-02-11T00:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = birthday - now;
+
+    if (diff <= 0) {
+        document.getElementById("countdown").innerHTML =
+            "🎉 Happy Birthday, Bestie 🎉";
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("countdown").innerHTML =
+        `${days} days · ${hours} hrs · ${minutes} mins`;
+}, 1000);
+
+function revealWish() {
+    document.getElementById("wish").style.display = "block";
+}
+</script>
+
+</body>
+</html>
